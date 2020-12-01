@@ -92,7 +92,6 @@ void display(){
 		floodfill(x,y,0);
 		x = x + 50;	
 		if (x > n) {
-			cleardevice();
     		getText();
 			break; 
         }
