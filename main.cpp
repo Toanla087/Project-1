@@ -10,23 +10,23 @@ int color = 15;
 
 void linePoint(){
 	// ve duong truyen
-	line (0,20,650,20);
-    line (0,40,650,40);
+	line (0,200,650,200);
+    line (0,220,650,220);
     // ve diem thu
-    circle (640,30,5);
+    circle (640,210,5);
     // ve diem truyen
-	circle (50,30,3);
-	circle (100,30,3);
-	circle (150,30,3);
-	circle (200,30,3);
-	circle (250,30,3);
-	circle (300,30,3);
-	circle (350,30,3);
-	circle (400,30,3);
-	circle (450,30,3);
-	circle (500,30,3);
-	circle (550,30,3);
-	circle (600,30,3);
+	circle (50,210,3);
+	circle (100,210,3);
+	circle (150,210,3);
+	circle (200,210,3);
+	circle (250,210,3);
+	circle (300,210,3);
+	circle (350,210,3);
+	circle (400,210,3);
+	circle (450,210,3);
+	circle (500,210,3);
+	circle (550,210,3);
+	circle (600,210,3);
 }
 // thuat toan ve duong thang
 void lineDDA(int x1, int y1, int x2, int y2){       
@@ -77,17 +77,17 @@ void getText(){
 void display(){
 	linePoint();
 	int x,y,n;
-    y = 30;
+    y = 210;
     n = getmaxx()-50;
     x = 50;
     while(!kbhit()){
 	    setcolor(15);
-    	lineDDA(x,y, 650, 30);
+    	lineDDA(x,y, 640, 210);
 		setfillstyle(1,15);
 		floodfill(x,y,15);
 		delay(10);
 		setcolor(0); 
-		lineDDA(x,y, 650, 30);
+		lineDDA(x,y, 640, 210);
 		setfillstyle(1,0);
 		floodfill(x,y,0);
 		x = x + 50;	
