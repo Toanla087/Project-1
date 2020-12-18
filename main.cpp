@@ -2,12 +2,14 @@
 #include <graphics.h> 
 #include <conio.h>
 #include <stdlib.h>
+#include <string>
 #define Round(a) (int)(a+0.5)  
 #define DELAY 10
 using namespace std ;
 int color = 15;
-
-
+char s[100];
+int i = 1;
+	
 void linePoint(){
 	// ve duong truyen
 	line (0,200,650,200);
@@ -27,6 +29,15 @@ void linePoint(){
 	circle (500,210,3);
 	circle (550,210,3);
 	circle (600,210,3);
+	// hien thi lan chay thu bao nhieu cua chuong trinh
+	line (240,140,380,140);
+	line (240,140,240,180);
+	line (240,180,380,180);
+	line (380,140,380,180);
+	settextstyle(1,0,3);
+	setcolor(10);
+	sprintf(s,"LAN: %d",i);
+	outtextxy(250,150,s);
 }
 // thuat toan ve duong thang
 void lineDDA(int x1, int y1, int x2, int y2){       
@@ -92,19 +103,21 @@ void display(){
 		floodfill(x,y,0);
 		x = x + 50;	
 		if (x > n) {
+			cleardevice();
     		getText();
 			break; 
         }
-	}	
+	}		
 }
 
 void run(){
 	linePoint();
-	display();
+    display();
 	//kiem tra co muon tiep tuc khong
 	if (mousey() <= 325) {
 			showTextBackground(220,270,"CO",15);
 			cleardevice();
+			i++;
 			display();
 			while (!ismouseclick(WM_LBUTTONDOWN)){
 				delay(0);
