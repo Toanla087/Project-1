@@ -54,6 +54,21 @@ void lineDDA(int x1, int y1, int x2, int y2){
         putpixel(x,Round(y), color);
     }
 }
+
+void lineDDA1(int x1, int y1, int x2, int y2){       
+    int x_unit = 1, Dx = x2 - x1, Dy = y2 - y1;     
+    int x = x2;
+    float y = y2;
+    float m = (float)Dy/Dx;    
+    putpixel(x, Round(y), color);
+    
+    while (x > x1){
+    	delay(10);  
+        x -= x_unit;
+        y -= m;
+        putpixel(x,Round(y), color);
+	}
+}
 // Hien thi chu
 void showText(int x,int y,char *str){
 	int c = getcolor();
@@ -88,20 +103,37 @@ void getText(){
 void display(){
 	linePoint();
 	int x,y,n;
+	int diemthu = 1;
     y = 210;
     n = getmaxx()-50;
     x = 50;
     while(!kbhit()){
+    	settextstyle(1,0,1);
+    	setcolor(10);
+	    sprintf(s,"DIEM: %d DANG TRUYEN",diemthu);
+	    outtextxy(150,250,s);
+	    sprintf(s,"CAC DIEM KHAC DUNG DOI");
+	    outtextxy(115,300,s);
 	    setcolor(15);
     	lineDDA(x,y, 640, 210);
 		setfillstyle(1,15);
 		floodfill(x,y,15);
-		delay(10);
 		setcolor(0); 
+		delay(10);
 		lineDDA(x,y, 640, 210);
 		setfillstyle(1,0);
 		floodfill(x,y,0);
-		x = x + 50;	
+		setcolor(15);
+    	lineDDA1(x,y, 640, 210);
+		setfillstyle(1,15);
+		floodfill(x,y,15);
+		delay(10);
+		setcolor(0); 
+		lineDDA1(x,y, 640, 210);
+		setfillstyle(1,0);
+		floodfill(x,y,0);
+		diemthu++;
+		x = x + 50;
 		if (x > n) {
 			cleardevice();
     		getText();
